@@ -1,10 +1,9 @@
-from django.shortcuts import render
-
 from rest_framework.viewsets import GenericViewSet
+from rest_framework.filters import SearchFilter
 from rest_framework import mixins 
 from rest_framework.permissions import IsAuthenticated
 
-from crud.models import Photo, Product
+from crud.models import File, Photo, Product
 from crud.serializers import FileSer, PhotoSer, ProductSer
 
 # Create your views here.
@@ -18,6 +17,9 @@ class ProductView(mixins.ListModelMixin,
     permission_classes = [IsAuthenticated]
     queryset = Product.objects.all()
     serializer_class = ProductSer
+    filter_backends = [SearchFilter]    
+    search_fields = ['name', 'description']  # you can search across fields
+
 
 
 class PhotoView(mixins.ListModelMixin, 
@@ -38,5 +40,5 @@ class FileView(mixins.ListModelMixin,
                   mixins.DestroyModelMixin,
                   GenericViewSet):
     permission_classes = [IsAuthenticated]
-    queryset = Photo.objects.all()
+    queryset = File.objects.all()
     serializer_class = FileSer

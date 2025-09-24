@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from crud.models import Product
+from crud.models import File, Photo, Product
 
 
 
@@ -12,11 +12,11 @@ class ProductSer(serializers.ModelSerializer):
 
 class PhotoSer(serializers.ModelSerializer):
     class Meta:
-        model = Product
+        model = Photo
         fields = '__all__'
 
 
 class FileSer(serializers.ModelSerializer):
     class Meta:
-        model = Product
+        model = File
         fields = '__all__'
