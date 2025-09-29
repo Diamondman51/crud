@@ -8,7 +8,7 @@ from django.db import models
 
 class Product(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
-    desciption = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     photo = models.ImageField(null=True, blank=True, upload_to='product/images/')
     file = models.FileField(null=True, blank=True, upload_to='product/files/')
     price = models.FloatField(blank=True, null=True)
